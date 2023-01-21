@@ -96,13 +96,13 @@
                 </form>
                 @endif
               </div>
-              <p class="mt-3 footer-text text-center">copyright © 2018 Bootstrapdash. All rights reserved.</p>
+              <p class="mt-3 footer-text text-center">copyright © 2022 Jago Software IPOS. All rights reserved.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
+
     <!-- Javascript -->
     <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <script src="{{ asset('assets/vendors/js/vendor.bundle.addons.js') }}"></script>
