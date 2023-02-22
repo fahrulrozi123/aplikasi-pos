@@ -284,8 +284,8 @@
           </div>
           <footer class="footer" id="footer-content">
             <div class="container-fluid clearfix">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2022 <a href="#" target="_blank">Jago Software</a>. All rights reserved.</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Nasrul Kurniawan
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2022 <a href="https://www.google.com/search?q=warung%20sugeng&oq=warung+sugeng&aqs=chrome.0.69i59j0i13i512j46i13i175i199i512j0i22i30i625l7.21568j0j7&sourceid=chrome&ie=UTF-8&tbs=lf:1,lf_ui:2&tbm=lcl&sxsrf=AJOqlzWH6rv3mjcrV0qrtbv2AzQ2v5JMWA:1676318824127&rflfq=1&num=10&rldimm=10112370363781936474&lqi=Cg13YXJ1bmcgc3VnZW5nSO7t-Mz0rYCACFoXEAAQARgAGAEiDXdhcnVuZyBzdWdlbmeSAQ1ncm9jZXJ5X3N0b3JlqgEVEAEqESINd2FydW5nIHN1Z2VuZygm&ved=2ahUKEwikiqugppP9AhUP03MBHW6MApwQvS56BAgMEAE&sa=X&rlst=f#rlfi=hd:;si:10112370363781936474,l,Cg13YXJ1bmcgc3VnZW5nSO7t-Mz0rYCACFoXEAAQARgAGAEiDXdhcnVuZyBzdWdlbmeSAQ1ncm9jZXJ5X3N0b3JlqgEVEAEqESINd2FydW5nIHN1Z2VuZygm;mv:[[-6.0602363,106.89754219999999],[-6.3257110999999995,106.50879710000001]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3!3sIAE,lf:1,lf_ui:2" target="_blank">Toko Sugeng</a>. Pembelanjaan.</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Fhahroul Rozi
               </span>
             </div>
           </footer>

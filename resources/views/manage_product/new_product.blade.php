@@ -15,7 +15,7 @@
     </div>
   </div>
 </div>
-<div class="row modal-group">
+{{-- <div class="row modal-group">
   <div class="modal fade" id="scanModal" tabindex="-1" role="dialog" aria-labelledby="scanModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -67,27 +67,42 @@
       </div>
 	</div>
   </div>
-</div>
+</div> --}}
 <div class="row">
 	<div class="col-lg-8 col-md-12 col-sm-12 mb-4">
 		<div class="card card-noborder b-radius">
 			<div class="card-body">
-				<form action="{{ url('/product/create') }}" method="post" name="create_form">
+				<form action="{{ url('/product/create') }}" method="post" name="create_form" enctype="multipart/form-data">
 					@csrf
 					<div class="form-group row">
-			  			<label class="col-12 font-weight-bold col-form-label">Kode Barang <span class="text-danger">*</span></label>
-					  	<div class="col-12">
-					  		<div class="input-group">
-					  			<input type="text" class="form-control number-input" name="kode_barang" placeholder="Masukkan Kode Barang">
-					  			<div class="inpu-group-prepend">
-					  				<button class="btn btn-inverse-primary btn-sm btn-scan shadow-sm ml-2" type="button" data-toggle="modal" data-target="#scanModal"><i class="mdi mdi-crop-free"></i></button>
-					  			</div>
-					  		</div>
-					  	</div>
-						<div class="col-12 error-notice" id="kode_barang_error"></div>
+						<div class="form-group row">
+							<label class="col-12 font-weight-bold col-form-label">Foto Barang</label>
+							<div class="col-12 d-flex flex-row align-items-center mt-2 mb-2">
+								<img src="{{ asset('pictures/default.jpg') }}" class="default-img mr-4" id="preview-foto">
+								<div class="btn-action">
+									<input type="file" name="foto" id="foto" hidden="">
+									<button class="btn btn-sm upload-btn mr-1" type="button">Upload Foto</button>
+									<button class="btn btn-sm delete-btn" type="button">Hapus</button>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="form-group row">
-					  	<div class="col-lg-6 col-md-6 col-sm-12 space-bottom">
+						<div class="col-lg-6 col-md-6 col-sm-12 space-bottom">
+							<div class="row">
+								<label class="col-12 font-weight-bold col-form-label">Kode Barang <span class="text-danger">*</span></label>
+								<div class="col-12">
+									<div class="input-group">
+										<input type="text" class="form-control number-input" name="kode_barang" placeholder="Masukkan Kode Barang">
+										{{-- <div class="inpu-group-prepend">
+											<button class="btn btn-inverse-primary btn-sm btn-scan shadow-sm ml-2" type="button" data-toggle="modal" data-target="#scanModal"><i class="mdi mdi-crop-free"></i></button>
+										</div> --}}
+									</div>
+								</div>
+								<div class="col-12 error-notice" id="kode_barang_error"></div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-12 space-bottom">
 					  		<div class="row">
 					  			<label class="col-12 font-weight-bold col-form-label">Nama Barang <span class="text-danger">*</span></label>
 							  	<div class="col-12">
@@ -96,21 +111,21 @@
 								<div class="col-12 error-notice" id="nama_barang_error"></div>
 					  		</div>
 					  	</div>
-					  	<div class="col-lg-6 col-md-6 col-sm-12">
-					  		<div class="row">
-					  			<label class="col-12 font-weight-bold col-form-label">Jenis Barang <span class="text-danger">*</span></label>
-							  	<div class="col-12">
-							  		<select class="form-control" name="jenis_barang">
-							  			<option value="">-- Pilih Jenis Barang --</option>
-							  			<option value="Produksi">Produksi</option>
-							  			<option value="Konsumsi">Konsumsi</option>
-							  		</select>
-							  	</div>
-								<div class="col-12 error-notice" id="jenis_barang_error"></div>
-					  		</div>
-					  	</div>
 					</div>
 					<div class="form-group row">
+						<div class="col-lg-6 col-md-6 col-sm-12">
+							<div class="row">
+								<label class="col-12 font-weight-bold col-form-label">Jenis Barang <span class="text-danger">*</span></label>
+								<div class="col-12">
+									<select class="form-control" name="jenis_barang">
+										<option value="">-- Pilih Jenis Barang --</option>
+										<option value="Produksi">Produksi</option>
+										<option value="Konsumsi">Konsumsi</option>
+									</select>
+								</div>
+							  <div class="col-12 error-notice" id="jenis_barang_error"></div>
+							</div>
+						</div>
 					  	<div class="col-lg-6 col-md-6 col-sm-12 space-bottom">
 					  		<div class="row">
 					  			<label class="col-12 font-weight-bold col-form-label">Berat Barang</label>
@@ -131,16 +146,16 @@
 							  	</div>
 					  		</div>
 					  	</div>
-					  	<div class="col-lg-6 col-md-6 col-sm-12">
-					  		<div class="row">
-					  			<label class="col-12 font-weight-bold col-form-label">Merek Barang</label>
-							  	<div class="col-12">
-							  		<input type="text" class="form-control" name="merek" placeholder="Masukkan Merek Barang">
-							  	</div>
-					  		</div>
-					  	</div>
 					</div>
 					<div class="form-group row">
+						<div class="col-lg-6 col-md-6 col-sm-12">
+							<div class="row">
+								<label class="col-12 font-weight-bold col-form-label">Merek Barang</label>
+								<div class="col-12">
+									<input type="text" class="form-control" name="merek" placeholder="Masukkan Merek Barang">
+								</div>
+							</div>
+						</div>
 						@if($supply_system->status == true)
 					  	<div class="col-lg-6 col-md-6 col-sm-12 space-bottom">
 					  		<div class="row">
@@ -158,7 +173,7 @@
 							  	<div class="col-12">
 							  		<div class="input-group">
 							  			<div class="input-group-prepend">
-							  				<span class="input-group-text">Rp. </span>
+							  				<span class="input-group-text" style="background-color: #dee2e6">Rp. </span>
 							  			</div>
 							  			<input type="text" class="form-control number-input" name="harga" placeholder="Masukkan Harga Barang">
 							  		</div>
@@ -176,7 +191,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-4 col-md-12 col-sm-12">
+	{{-- <div class="col-lg-4 col-md-12 col-sm-12">
 		<div class="row">
 			<div class="col-12 stretch-card bg-dark-blue">
 				<div class="card text-white card-noborder b-radius">
@@ -227,7 +242,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 </div>
 @endsection
 @section('script')
@@ -249,5 +264,9 @@
         "error"
     );
   @endif
+
+	$(document).on('click', '.delete-btn', function(){
+		$("#preview-foto").attr("src", "{{ asset('pictures') }}/default.jpg");
+	});
 </script>
 @endsection

@@ -18,6 +18,7 @@ class CreateTransactionTable extends Migration
             $table->string('kode_transaksi');
             $table->string('kode_barang');
             $table->string('nama_barang');
+            $table->string('foto')->default('default.jpg');
             $table->bigInteger('harga');
             $table->integer('jumlah');
             $table->bigInteger('total_barang');

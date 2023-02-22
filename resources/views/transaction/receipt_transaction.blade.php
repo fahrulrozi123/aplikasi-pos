@@ -156,7 +156,7 @@
 		<hr class="hr-dash">
 	</div>
 	<div class="footer">
-		<p class="center">Terima Kasih Telah Berkunjung</p>
+		<p class="center">Terima Kasih Telah Berkunjung Di Toko Sugeng</p>
 	</div>
 </body>
 </html>

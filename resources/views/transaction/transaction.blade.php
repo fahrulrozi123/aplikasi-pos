@@ -67,6 +67,7 @@
                 @if($product->stok != 0)
                 <li class="list-group-item d-flex justify-content-between align-items-center active-list">
                   <div class="text-group">
+                    {{-- <img src="{{ asset('pictures/' . $product->foto) }}" class="m-0 img"> --}}
                     <p class="m-0">{{ $product->kode_barang }}</p>
                     <p class="m-0 txt-light">{{ $product->nama_barang }}</p>
                   </div>
@@ -80,12 +81,13 @@
                 @else
                 <li class="list-group-item d-flex justify-content-between align-items-center active-list">
                   <div class="text-group">
+                    {{-- <img src="{{ asset('pictures/' . $product->foto) }}" class="m-0 img">  --}}
                     <p class="m-0">{{ $product->kode_barang }}</p>
                     <p class="m-0 txt-light">{{ $product->nama_barang }}</p>
                   </div>
                   <div class="d-flex align-items-center">
                     <span class="ammount-box bg-green mr-1"><i class="mdi mdi-coin"></i></span>
-                    <p class="m-0">Rp. {{ number_format($product->harga,2,',','.') }}</p>
+                    <p class="m-0">Rp. {{ number_format($product->harga) }}</p>
                   </div>
                   <a href="#" class="btn btn-icons btn-rounded btn-inverse-outline-primary font-weight-bold btn-pilih" role="button"><i class="mdi mdi-chevron-right"></i></a>
                 </li>
@@ -185,9 +187,9 @@
                     <button class="btn btn-search" data-toggle="modal" data-target="#tableModal" type="button">
                       <i class="mdi mdi-magnify"></i>
                     </button>
-                    <button class="btn btn-scan" data-toggle="modal" data-target="#scanModal" type="button">
+                    {{-- <button class="btn btn-scan" data-toggle="modal" data-target="#scanModal" type="button">
                       <i class="mdi mdi-crop-free"></i>
-                    </button>
+                    </button> --}}
                   </div>
                 </div>
               </div>
@@ -268,7 +270,7 @@
                   <td>
                     <div class="input-group">
                       <div class="input-group-prepend">
-                        <div class="input-group-text">Rp.</div>
+                        <div class="input-group-text" style="background-color: #dee2e6">Rp.</div>
                       </div>
                       <input type="text" class="form-control number-input input-notzero bayar-input" name="bayar" placeholder="Masukkan nominal bayar">
                     </div>

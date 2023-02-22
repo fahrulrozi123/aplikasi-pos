@@ -3,12 +3,13 @@
 <link rel="stylesheet" href="{{ asset('css/manage_product/product/style.css') }}">
 @endsection
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <div class="row page-title-header">
   <div class="col-12">
     <div class="page-header d-flex justify-content-between align-items-center">
       <h4 class="page-title">Daftar Barang</h4>
       <div class="d-flex justify-content-start">
-      	<div class="dropdown">
+      	{{-- <div class="dropdown">
 	        <button class="btn btn-icons btn-inverse-primary btn-filter shadow-sm" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	          <i class="mdi mdi-filter-variant"></i>
 	        </button>
@@ -25,7 +26,7 @@
             @endif
             <a href="#" class="dropdown-item filter-btn" data-filter="harga">Harga Barang</a>
 	        </div>
-	      </div>
+	      </div> --}}
         <div class="dropdown dropdown-search">
           <button class="btn btn-icons btn-inverse-primary btn-filter shadow-sm ml-2" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="mdi mdi-magnify"></i>
@@ -49,7 +50,7 @@
   <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <form action="{{ url('/product/update') }}" method="post" name="update_form">
+        <form action="{{ url('/product/update') }}" method="post" name="update_form" enctype="multipart/form-data">
           <div class="modal-header">
             <h5 class="modal-title" id="editModalLabel">Edit Barang</h5>
             <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
@@ -58,19 +59,29 @@
           </div>
           <div class="modal-body" id="edit-modal-body">
               @csrf
-              <div class="row" hidden="">
+              {{-- <div class="row" hidden="">
                 <div class="col-12">
                   <input type="text" name="id">
                 </div>
+              </div> --}}
+              <div class="col-12 text-center">
+                <img src="{{ asset('pictures/default.jpg') }}" class="img-edit">
               </div>
+              <div class="col-12 text-center mt-2">
+                <input type="file" name="foto" hidden="">
+                <input type="text" name="nama_foto" hidden="">
+                <button type="button" class="btn btn-primary preview-foto font-weight-bold btn-upload">Ubah</button>
+                <button type="button" class="btn btn-delete-img">Hapus</button>
+              </div>
+              <br>
               <div class="form-group row">
                 <label class="col-lg-3 col-md-3 col-sm-12 col-form-label font-weight-bold">Kode Barang</label>
-                <div class="col-lg-7 col-md-7 col-sm-10 col-10">
-                  <input type="text" class="form-control" name="kode_barang">
+                <div class="col-lg-9 col-md-9 col-sm-12 col-12">
+                  <input type="text" class="form-control" name="kode_barang" disabled>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                {{-- <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                   <button class="btn btn-inverse-primary btn-sm btn-scan shadow-sm" type="button"><i class="mdi mdi-crop-free"></i></button>
-                </div>
+                </div> --}}
                 <div class="col-lg-9 col-md-9 col-sm-12 offset-lg-3 offset-md-3 error-notice" id="kode_barang_error"></div>
               </div>
               <div class="form-group row">
@@ -125,7 +136,7 @@
                 <div class="col-lg-9 col-md-9 col-sm-12">
                   <div class="input-group">
                       <div class="input-group-prepend">
-                        <span class="input-group-text">Rp. </span>
+                        <span class="input-group-text" style="background-color: #dee2e6">Rp. </span>
                       </div>
                       <input type="text" class="form-control number-input input-notzero" name="harga">
                   </div>
@@ -181,7 +192,8 @@
         		<table class="table table-custom">
               <thead>
                 <tr>
-                  <th>Barang</th>
+                  <th>Kode Barang</th>
+                  <th>Nama Barang</th>
                   <th>Jenis</th>
                   <th>Berat</th>
                   <th>Merk</th>
@@ -197,8 +209,11 @@
                 @foreach($products as $product)
               	<tr>
                   <td>
-                    <span class="kd-barang-field">{{ $product->kode_barang }}</span><br><br>
-                    <span class="nama-barang-field">{{ $product->nama_barang }}</span>
+                    <span class="btn kode-span kd-barang-field">{{ $product->kode_barang }}</span>
+                  </td>
+                  <td>
+                    <img src="{{ asset('pictures/' . $product->foto) }}">
+                    <span class="ml-2">{{ $product->nama_barang }}</span>
                   </td>
                   <td>{{ $product->jenis_barang }}</td>
                   <td>{{ $product->berat_barang }}</td>
@@ -206,7 +221,7 @@
                   @if($supply_system->status == true)
                   <td><span class="ammount-box bg-secondary"><i class="mdi mdi-cube-outline"></i></span>{{ $product->stok }}</td>
                   @endif
-                  <td><span class="ammount-box bg-green"><i class="mdi mdi-coin"></i></span>Rp. {{ number_format($product->harga,2,',','.') }}</td>
+                  <td><span class="ammount-box bg-green"><i class="mdi mdi-coin"></i></span>Rp. {{ number_format($product->harga) }}</td>
                   @if($supply_system->status == true)
                   <td>
                     @if($product->keterangan == 'Tersedia')
@@ -218,10 +233,12 @@
                   @endif
                   <td>
                     <button type="button" class="btn btn-edit btn-icons btn-rounded btn-secondary" data-toggle="modal" data-target="#editModal" data-edit="{{ $product->id }}">
-                        <i class="mdi mdi-pencil"></i>
+                        {{-- <i class="mdi mdi-pencil"></i> --}}
+                        <i class="fa-solid fa-pen-nib"></i>
                     </button>
                     <button type="button" class="btn btn-icons btn-rounded btn-secondary ml-1 btn-delete" data-delete="{{ $product->id }}">
-                        <i class="mdi mdi-close"></i>
+                        {{-- <i class="mdi mdi-close"></i> --}}
+                        <i class="fa-solid fa-trash"></i>
                     </button>
                   </td>
                 </tr>
@@ -308,6 +325,7 @@
       success:function(response)
       {
         $('input[name=id]').val(response.product.id);
+        $('.img-edit').attr("src", "{{ asset('pictures') }}/" + response.product.foto);
         $('input[name=kode_barang]').val(response.product.kode_barang);
         $('input[name=nama_barang]').val(response.product.nama_barang);
         $('input[name=merek]').val(response.product.merek);
@@ -337,6 +355,11 @@
         window.open("{{ url('/product/delete') }}/" + data_delete, "_self");
       }
     });
+  });
+
+  $(document).on('click', '.btn-delete-img', function(){
+    $(".img-edit").attr("src", "{{ asset('pictures') }}/default.jpg");
+    $('input[name=nama_foto]').val('default.jpg');
   });
 </script>
 @endsection

@@ -3,12 +3,13 @@
 <link rel="stylesheet" href="{{ asset('css/manage_account/account/style.css') }}">
 @endsection
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <div class="row page-title-header">
   <div class="col-12">
     <div class="page-header d-flex justify-content-between align-items-center">
       <h4 class="page-title">Daftar Akun</h4>
       <div class="d-flex justify-content-start">
-      	<div class="dropdown">
+      	{{-- <div class="dropdown">
 	        <button class="btn btn-icons btn-inverse-primary btn-filter shadow-sm" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	          <i class="mdi mdi-filter-variant"></i>
 	        </button>
@@ -19,7 +20,7 @@
             <a href="#" class="dropdown-item filter-btn" data-filter="email">Email</a>
             <a href="#" class="dropdown-item filter-btn" data-filter="role">Posisi</a>
 	        </div>
-	      </div>
+	      </div> --}}
         <div class="dropdown dropdown-search">
           <button class="btn btn-icons btn-inverse-primary btn-filter shadow-sm ml-2" type="button" id="dropdownMenuIconButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="mdi mdi-magnify"></i>
@@ -137,10 +138,12 @@
                   </td>
                   <td>
                   	<button type="button" class="btn btn-edit btn-icons btn-rounded btn-secondary" data-toggle="modal" data-target="#editModal" data-edit="{{ $user->id }}">
-                        <i class="mdi mdi-pencil"></i>
+                        {{-- <i class="mdi mdi-pencil"></i> --}}
+                        <i class="fa-solid fa-pen-nib"></i>
                     </button>
                     <button type="button" data-delete="{{ $user->id }}" class="btn btn-icons btn-rounded btn-secondary ml-1 btn-delete">
-                        <i class="mdi mdi-close"></i>
+                        {{-- <i class="mdi mdi-close"></i> --}}
+                        <i class="fa-solid fa-trash"></i>
                     </button>
                   </td>
                 </tr>

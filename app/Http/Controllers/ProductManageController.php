@@ -75,9 +75,12 @@ class ProductManageController extends Controller
         	->count();
             $supply_system = Supply_system::first();
 
-        	if($check_product == 0)
+        	if($req->foto != '' && $check_product == 0)
         	{
         		$product = new Product;
+                $foto = $req->file('foto');
+                $product->foto = $foto->getClientOriginalName();
+                $foto->move(public_path('pictures/'), $foto->getClientOriginalName());
     	    	$product->kode_barang = $req->kode_barang;
     	    	$product->jenis_barang = $req->jenis_barang;
     	    	$product->nama_barang = $req->nama_barang;
@@ -161,9 +164,12 @@ class ProductManageController extends Controller
             $check_product = Product::where('kode_barang', $req->kode_barang)
             ->count();
             $product_data = Product::find($req->id);
-            if($check_product == 0 || $product_data->kode_barang == $req->kode_barang)
+            if(($req->foto == '' && $check_product == 0) || ($product_data->kode_barang == $req->kode_barang))
             {
                 $product = Product::find($req->id);
+                $foto = $req->file('foto');
+                $product->foto = $foto->getClientOriginalName();
+                $foto->move(public_path('pictures/'), $foto->getClientOriginalName());
                 $kode_barang = $product->kode_barang;
                 $product->kode_barang = $req->kode_barang;
                 $product->jenis_barang = $req->jenis_barang;

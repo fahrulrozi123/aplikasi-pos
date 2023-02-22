@@ -23,9 +23,10 @@ class CreateMarketTable extends Migration
 
         DB::table('markets')->insert(
             array(
-                'nama_toko' => 'Toko Pratama',
-                'no_telp' => '087878787878',
-                'alamat' => 'Jl. Mawar no.86, Bogor'
+                'nama_toko' => 'Toko Sugeng',
+                'no_telp' => '0812-8363-9357',
+                'alamat' => 'Jl. Raya Ps. Kemis, Gelam Jaya, Kec. Ps. Kemis, Kota Tangerang, Banten 15560
+                '
             )
         );
     }
